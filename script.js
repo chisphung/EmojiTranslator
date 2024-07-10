@@ -9,7 +9,6 @@ const emojiAlphabet = {
     'V': '✅', 'W': '🔱', 'X': '❎', 'Y': '🍸', 'Z': '💤'
 };
 
-// Create a reverse mapping from emojis to letters
 const reverseEmojiAlphabet = {};
 for (const [key, value] of Object.entries(emojiAlphabet)) {
     reverseEmojiAlphabet[value] = key;
