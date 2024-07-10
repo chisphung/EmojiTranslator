@@ -47,8 +47,13 @@ textarea::placeholder {
     color: #aaa;
 }
 
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 button {
-    width: 100%;
+    width: 48%;
     padding: 15px;
     background-color: #007BFF;
     color: white;

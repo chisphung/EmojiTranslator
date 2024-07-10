@@ -11,7 +11,10 @@
     <div class="container">
         <h1>Emoji Translator</h1>
         <textarea id="inputText" placeholder="Enter text here..."></textarea>
-        <button onclick="translateText()">Translate</button>
+        <div class="buttons">
+            <button onclick="translateToEmojis()">Translate to Emojis</button>
+            <button onclick="translateToText()">Translate to Text</button>
+        </div>
         <div id="outputText"></div>
     </div>
     <script src="script.js"></script>

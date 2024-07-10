@@ -9,16 +9,46 @@ const emojiAlphabet = {
     'V': '✅', 'W': '🔱', 'X': '❎', 'Y': '🍸', 'Z': '💤'
 };
 
+// Create a reverse mapping from emojis to letters
+const reverseEmojiAlphabet = {};
+for (const [key, value] of Object.entries(emojiAlphabet)) {
+    reverseEmojiAlphabet[value] = key;
+}
+
 function removeAccents(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function translateText() {
+function translateToEmojis() {
     const inputText = removeAccents(document.getElementById('inputText').value);
     let outputText = '';
 
     for (let char of inputText) {
         outputText += emojiAlphabet[char] || char;
+    }
+
+    document.getElementById('outputText').innerText = outputText;
+}
+
+function translateToText() {
+    const inputText = document.getElementById('inputText').value;
+    let outputText = '';
+    let i = 0;
+
+    while (i < inputText.length) {
+        let found = false;
+        for (const [emoji, letter] of Object.entries(reverseEmojiAlphabet)) {
+            if (inputText.startsWith(emoji, i)) {
+                outputText += letter;
+                i += emoji.length;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            outputText += inputText[i];
+            i++;
+        }
     }
 
     document.getElementById('outputText').innerText = outputText;
